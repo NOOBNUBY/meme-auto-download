@@ -44,7 +44,7 @@ for images in images:
     try:
         images.click() 
         time.sleep(1)
-        imgUrl = driver.find_element(By.CLASS_NAME,'n3VNCb').get_attribute('src')
+        imgUrl = driver.find_element(By.XPATH,'/html/body/div[2]/c-wiz/div[3]/div[1]/div/div/div/div/div[1]/div[1]/span/div[1]/div[1]/div[800]/a[1]/div[1]/img').get_attribute('src')
         urllib.request.urlretrieve(imgUrl, f"./download/{count}짤.jpg")
         count = count + 1 
     except:
