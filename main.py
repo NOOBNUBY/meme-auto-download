@@ -6,10 +6,7 @@ import urllib.request
 
 word = "짤"
 
-options = webdriver.ChromeOptions() 
-options.add_argument("download.default_directory=.\download")
-
-driver = webdriver.Chrome(chrome_options=options)
+driver = webdriver.Chrome()
 
 driver.get("https://www.google.co.kr/imghp?hl=ko&ogbl")
 
@@ -44,7 +41,7 @@ for images in images:
     try:
         images.click() 
         time.sleep(1)
-        imgUrl = driver.find_element(By.XPATH,'/html/body/div[2]/c-wiz/div[3]/div[1]/div/div/div/div/div[1]/div[1]/span/div[1]/div[1]/div[800]/a[1]/div[1]/img').get_attribute('src')
+        imgUrl = driver.find_element(By.XPATH,'/html/body/div[2]/c-wiz/div[3]/div[2]/div[3]/div[2]/div/div[2]/div[2]/div[2]/c-wiz/div[2]/div[1]/div[1]/div[2]/div/a/img').get_attribute('src')
         urllib.request.urlretrieve(imgUrl, f"./download/{count}짤.jpg")
         count = count + 1 
     except:
