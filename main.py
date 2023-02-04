@@ -17,7 +17,7 @@ elem = driver.find_element(By.CLASS_NAME,'gLFyf')
 elem.send_keys(word)
 elem.send_keys(Keys.RETURN)
 
-SCROLL_PAUSE_TIME = 1.5
+SCROLL_PAUSE_TIME = 2
 
 # Get scroll height
 last_height = driver.execute_script("return document.body.scrollHeight")
@@ -33,7 +33,7 @@ while True:
     new_height = driver.execute_script("return document.body.scrollHeight")
     if new_height == last_height:
         try:
-            driver.find_element(By.CLASS_NAME,'.mye4qd').click()
+            driver.find_element(By.CLASS_NAME,'mye4qd').click()
         except:
             break
     last_height = new_height
@@ -41,8 +41,11 @@ while True:
 images = driver.find_elements(By.CLASS_NAME,'rg_i')
 count = 1
 for images in images:
-    images.click() 
-    time.sleep(1)
-    imgUrl = driver.find_element(By.CLASS_NAME,'n3VNCb').get_attribute('src')
-    urllib.request.urlretrieve(imgUrl, f"./download/{count}짤.jpg")
-    count = count + 1 
+    try:
+        images.click() 
+        time.sleep(1)
+        imgUrl = driver.find_element(By.CLASS_NAME,'n3VNCb').get_attribute('src')
+        urllib.request.urlretrieve(imgUrl, f"./download/{count}짤.jpg")
+        count = count + 1 
+    except:
+        pass
